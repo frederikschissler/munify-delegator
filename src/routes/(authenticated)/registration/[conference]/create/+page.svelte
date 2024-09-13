@@ -18,17 +18,6 @@
 
 	const nextStep = async (create = false) => {
 		if (create) {
-			console.log({
-				conference: {
-					connect: {
-						id: data.conference.id
-					}
-				},
-				experience: delegation.experience!,
-				motivation: delegation.motivation!,
-				school: delegation.school!
-			});
-
 			const createdDelegation = await checkForError(
 				api.delegation.post({
 					conference: {
@@ -67,10 +56,10 @@
 		<Steps
 			currentStep={step}
 			steps={[
-				{ titel: m.infos() },
-				{ titel: m.questionnaire() },
-				{ titel: m.review() },
-				{ titel: m.invite() }
+				{ title: m.infos() },
+				{ title: m.questionnaire() },
+				{ title: m.review() },
+				{ title: m.invite() }
 			]}
 		/>
 	</header>
@@ -112,7 +101,7 @@
 							type="text"
 							placeholder={m.answerHere()}
 							class="input input-bordered w-full"
-							oninput={(e) => (delegation.school = e.target!.value)}
+							oninput={(e: any) => (delegation.school = e.target.value)}
 						/>
 					</label>
 					<label class="form-control w-full">
@@ -124,7 +113,7 @@
 						<textarea
 							placeholder={m.answerHere()}
 							class="textarea textarea-bordered w-full"
-							oninput={(e) => (delegation.motivation = e.target!.value)}
+							oninput={(e: any) => (delegation.motivation = e.target.value)}
 						></textarea>
 					</label>
 					<label class="form-control w-full">
@@ -136,7 +125,7 @@
 						<textarea
 							placeholder={m.answerHere()}
 							class="textarea textarea-bordered w-full"
-							oninput={(e) => (delegation.experience = e.target!.value)}
+							oninput={(e: any) => (delegation.experience = e.target!.value)}
 						></textarea>
 					</label>
 					<button class="btn btn-lg btn-primary" type="submit">{m.next()}</button>
